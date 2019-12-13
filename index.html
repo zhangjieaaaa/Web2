@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script type="text/javascript" src="animate.js"></script>
+  <title>轮播图</title>
+</head>
+<body>
+  
+<div class="smallbox">
+  <img class = "laba" src="images/a15.png">
+  <div class="hui"> 
+    <div class="smallsmallbox" id="smallsmallbox">
+    <span class="gundong" id="gundong">[温馨提示]最近有不少不法分子在网上骗人,请大家注意！！！！</span>
+  </div>
+ </div> 
+  </div>
+  <div class="box" id="box">
+    <div class="slider" id="slider">
+      <div class="slide"><img src="images/b5.png" alt=""></div>
+      <div class="slide"><img src="images/b1.png" alt=""></div>
+      <div class="slide"><img src="images/b2.png" alt=""></div>
+      <div class="slide"><img src="images/b3.png" alt=""></div>
+      <div class="slide"><img src="images/b4.png" alt=""></div>
+      <div class="slide"><img src="images/b5.png" alt=""></div>
+      <div class="slide"><img src="images/b1.png" alt=""></div>
+    </div>
+    <span id="left"><</span>
+    <span id="right">></span>
+    <ul class="nav" id="nav">
+      <li class="active">1</li>
+      <li class="active">2</li>
+      <li class="active">3</li>
+      <li class="active">4</li>
+      <li class="active">5</li>
+    </ul>  
+  </div> 
+  <script> 
+    var box =document.getElementById('box');
+    var oNavlist = document.getElementById('nav').children;
+    var slider = document.getElementById('slider');
+    var left = document.getElementById('left');
+    var right= document.getElementById('right');
+    var smallsmallbox= document.getElementById('smallsmallbox');
+    var index = 1;
+    var ahanum =0;
+    var timer;
+    var isMoving = false;
+    box.onmouseover = function(){
+      animate(left,{opacity:50});
+      animate(right,{opacity:50});
+      clearInterval(timer);
+    }
+    box.onmouseout = function(){
+      animate(left,{opacity:0})
+      animate(right,{opacity:0})
+      timer = setInterval(next,2000);
+    }
+    right.onclick = next;
+    left.onclick = prev;
+
+    for(var i=0;i<oNavlist.length;i++){
+      oNavlist[i].index = i;
+      oNavlist[i].onclick = function(){
+        index = this.index+1;
+        navmove();
+        animate(slider,{left:-1200*index});      
+      }
+    }
+    function next(){
+      if(isMoving){
+        return;
+      }
+      isMoving = true;
+      index++;
+      navmove();
+      animate(slider,{left:-1200*index},function(){
+        if(index==6){
+          slider.style.left = '-1200px';
+          index=1;
+        }
+        isMoving = false;
+      });
+    }
+    function prev(){
+      if(isMoving){
+        return;
+      }
+      isMoving = true;
+      index--;
+      navmove();
+      animate(slider,{left:-1200*index},function(){
+        if(index==0){
+          slider.style.left = '-6000px';
+          index = 5;  
+        }
+        isMoving = false;
+      });
+    }
+    function navmove(){
+      for(var i=0;i<oNavlist.length;i++){
+        oNavlist[i].className = "";
+      }
+      if(index>5){
+        oNavlist[0].className = "active";
+      }else if(index<=0){
+        oNavlist[4].className = "active";
+      }else{ 
+        oNavlist[index-1].className = 'active';
+      }
+    }
+    timer = setInterval(next,3000);
+      function aha(){
+          var aaa = getComputedStyle(smallsmallbox);
+          var bbb = parseInt(aaa["right"]);
+          var styleRight;
+          styleRight = bbb+ 1;    
+          if(styleRight === 1000){
+                 styleRight = -460;
+         }
+          smallsmallbox.style.right = styleRight + "px";
+    }     
+    setInterval(function(){
+      aha();
+    },10);
+    </script>
+</body>
+</html>

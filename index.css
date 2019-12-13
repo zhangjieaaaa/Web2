@@ -1,0 +1,109 @@
+*{
+  padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.box{
+  width:1200px;
+  height: 382px;
+  margin: -90px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider{
+  width: 13440px;
+  position: absolute;
+  left: -1200px;
+}
+
+.slide{
+  float: left;
+  overflow: hidden;
+  width: 1200px;
+}
+
+.box>span{
+  display: block;
+  width:30px;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+  top:175px;
+  line-height: 50px;
+  background:rgb(255,0,0) ;
+  font-size: 30px;
+  position: absolute;
+  opacity: 0;
+  
+}
+
+#left{
+  left: 30px;
+}
+
+#right{
+  right: 30px;
+}
+
+.nav{
+  position: absolute;
+  left: 500px;
+  bottom: 20px;
+}
+
+.nav li{
+  float: left;
+  width:20px;
+  height: 20px;
+  background:#ccc;
+  cursor: pointer;
+  margin:0 10px;
+  border-radius: 50%; 
+}
+
+
+.nav .active{
+  background: red;
+}
+
+ul,ol,li{
+  list-style-type:none;
+  text-align: center;
+}
+
+.smallbox{
+  height  : 30px;
+  background-color:gainsboro ;
+  margin: 100px auto;
+  position: relative;
+  overflow: hidden;
+}
+.hui{
+  width: 1000px;
+  height: 30px;
+  position: relative;
+  margin:0 auto;
+  overflow: hidden;
+}
+
+.smallsmallbox{
+  width: 450px;
+  position: absolute;
+  margin-top: 5px ;
+  right: -460px;
+  float: left;
+}
+
+
+.gundong{
+  color: red;
+}
+
+.laba{
+  margin-left: 445px ;
+  margin-top: 8px;
+  position: absolute;
+}
+
